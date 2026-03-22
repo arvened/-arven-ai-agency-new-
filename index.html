@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARVEN AI Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--nav:#3a3d4a;--bg:#eef0f5;--white:#fff;--dark:#1a1a2e;--gray:#888899;--teal:#4ecdc4;--green:#b8e04a;--purple:#7c6fcd;--b1:#5b8dee;--b2:#4ecdc4}
+body{font-family:'Barlow',sans-serif;background:var(--bg);color:var(--dark);font-weight:300;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 40px;display:flex;justify-content:space-between;align-items:center;background:var(--nav)}
+.nl span:first-child{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:20px;letter-spacing:.08em;color:#fff;display:block}
+.nl span:last-child{font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.6);text-decoration:none}
+.nav-links a:hover{color:#fff}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 40px 80px;background:linear-gradient(160deg,#eef0f5 0%,#e8eaf5 50%,#eef2ee 100%)}
+.badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(78,205,196,.4);border-radius:100px;padding:8px 20px;font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.15em;color:var(--gray);text-transform:uppercase;margin-bottom:48px;background:rgba(255,255,255,.5)}
+.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-weight:900;line-height:.9;margin-bottom:24px}
+.l1{font-size:clamp(80px,16vw,170px);background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.l2{font-size:clamp(56px,11vw,120px);color:rgba(180,185,210,.5);display:block}
+.l3{font-size:clamp(64px,13vw,140px);color:rgba(180,185,220,.35);display:block;font-style:italic}
+.sub{font-size:clamp(14px,2vw,17px);color:var(--gray);max-width:500px;line-height:1.7;margin-bottom:32px}
+.tagline{font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:.3em;color:var(--green);text-transform:uppercase;margin-bottom:48px}
+.cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:16px 32px;border-radius:8px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn-p{background:var(--purple);color:#fff}
+.btn-p:hover{background:#6b5fbd;transform:translateY(-1px)}
+.btn-s{background:rgba(255,255,255,.7);color:var(--dark);border:1px solid rgba(0,0,0,.1)}
+.btn-s:hover{background:#fff;transform:translateY(-1px)}
+.stats{padding:80px 40px;background:#fff}
+.sg{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;text-align:center}
+.sn{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(48px,6vw,72px);background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:8px}
+.sl{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--gray);text-transform:uppercase}
+section{padding:100px 40px;max-width:960px;margin:0 auto}
+.stag{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--teal);text-transform:uppercase;margin-bottom:24px;display:block}
+.stit{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(48px,6vw,72px);line-height:.95;color:rgba(180,185,220,.5);margin-bottom:24px}
+.stit strong{background:linear-gradient(135deg,var(--b1),var(--b2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block}
+.sdesc{font-size:16px;color:var(--gray);max-width:480px;line-height:1.7;margin-bottom:56px}
+.dirs{display:flex;flex-direction:column;gap:2px;border-radius:12px;overflow:hidden}
+.dir{background:#fff;padding:36px 40px;display:flex;gap:28px;align-items:flex-start;transition:background .2s}
+.dir:hover{background:#f8f9ff}
+.dico{width:52px;height:52px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.dir h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:22px;color:var(--dark);margin-bottom:8px}
+.dir p{font-size:15px;color:var(--gray);line-height:1.6}
+.prods{display:flex;flex-direction:column;gap:2px;border-radius:12px;overflow:hidden}
+.prod{background:#fff;padding:40px;transition:background .2s}
+.prod:hover{background:#f8f9ff}
+.ptag{font-family:'Space Grotesk',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--teal);text-transform:uppercase;margin-bottom:12px;display:block}
+.pname{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:28px;color:rgba(170,170,204,.8);margin-bottom:12px}
+.pdesc{font-size:15px;color:var(--gray);line-height:1.6;max-width:560px;margin-bottom:20px}
+.plink{font-family:'Space Grotesk',sans-serif;font-size:13px;color:var(--purple);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.plink:hover{gap:10px}
+.plink.muted{color:var(--gray);pointer-events:none}
+.good-s{padding:80px 40px;background:linear-gradient(160deg,#eef0f5,#e8eaf5)}
+.good-b{max-width:960px;margin:0 auto;background:#fff;border-radius:16px;padding:60px;text-align:center}
+.gico{font-size:40px;margin-bottom:24px;display:block}
+.gtit{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(48px,7vw,80px);line-height:.95;margin-bottom:24px}
+.gtit .w1{color:rgba(180,185,220,.5)}
+.gtit .w2{color:var(--green)}
+.gdesc{font-size:16px;color:var(--gray);max-width:480px;margin:0 auto 32px;line-height:1.7}
+.contact-s{padding:100px 40px;text-align:center;background:var(--nav)}
+.ctag{font-family:'Space Grotesk',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--teal);text-transform:uppercase;margin-bottom:24px;display:block}
+.ctit{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(56px,9vw,104px);line-height:.9;color:rgba(255,255,255,.2);margin-bottom:48px}
+.ctit strong{color:#fff;display:block}
+.csub{font-size:16px;color:rgba(255,255,255,.4);margin-bottom:40px}
+.cemail{font-family:'Space Grotesk',sans-serif;font-size:20px;color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(78,205,196,.3);padding-bottom:4px}
+footer{padding:32px 40px;background:#2e3140;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.flogo{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:18px;letter-spacing:.08em;color:#fff}
+.ftag{font-family:'Space Grotesk',sans-serif;font-size:10px;color:rgba(255,255,255,.35);margin-top:4px}
+.flinks{display:flex;gap:24px;list-style:none}
+.flinks a{font-family:'Space Grotesk',sans-serif;font-size:12px;color:rgba(255,255,255,.4);text-decoration:none}
+.flinks a:hover{color:#fff}
+.fcopy{font-family:'Space Grotesk',sans-serif;font-size:11px;color:rgba(255,255,255,.2)}
+@media(max-width:768px){nav{padding:18px 24px}.nav-links{display:none}.hero{padding:100px 24px 60px}.stats{padding:48px 24px}.sg{grid-template-columns:repeat(2,1fr);gap:24px}section{padding:60px 24px}.good-b{padding:40px 24px}.good-s,.contact-s{padding:60px 24px}footer{padding:28px 24px;flex-direction:column;text-align:center}.dir{flex-direction:column;gap:16px;padding:24px}.prod{padding:24px}}
+</style>
+</head>
+<body>
+<nav>
+<div class="nl"><span>ARVEN</span><span>AI AGENCY</span></div>
+<ul class="nav-links">
+<li><a href="#what">What we do</a></li>
+<li><a href="#products">Products</a></li>
+<li><a href="#good">Good</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<div class="hero">
+<div class="badge">Building AI that works · March 2026</div>
+<h1><span class="l1">ARVEN</span><span class="l2">AI</span><span class="l3">Agency</span></h1>
+<p class="sub">We build intelligent tools, automation systems and AI-powered products for founders, developers and teams who mean it.</p>
+<div class="tagline">Good Just Happens</div>
+<div class="cta">
+<a href="#what" class="btn btn-p">See what we do →</a>
+<a href="https://gumroad.com/arvened" class="btn btn-s">Claude Code Toolkit $29</a>
+</div>
+</div>
+<div class="stats">
+<div class="sg">
+<div><div class="sn">3</div><div class="sl">Products</div></div>
+<div><div class="sn">11</div><div class="sl">Languages</div></div>
+<div><div class="sn">$1</div><div class="sl">Per Sale → Ukraine</div></div>
+<div><div class="sn">∞</div><div class="sl">Updates</div></div>
+</div>
+</div>
+<section id="what">
+<span class="stag">What we do</span>
+<h2 class="stit"><strong>Three directions.</strong>One mission.</h2>
+<p class="sdesc">Agency services, ready-made products, and a charitable platform. Everything under one roof — ARVEN.</p>
+<div class="dirs">
+<div class="dir"><div class="dico">⚡</div><div><h3>Agency</h3><p>We build custom AI agents, automation pipelines and intelligent systems for your business. From concept to production.</p></div></div>
+<div class="dir"><div class="dico">📦</div><div><h3>Products</h3><p>Ready-to-use tools: Claude Code Toolkit (11 languages), SalesBot for Telegram, and more coming. Buy once, use forever.</p></div></div>
+<div class="dir"><div class="dico">🐾</div><div><h3>Good</h3><p>Powered by DARIVS. $1 from every product sale goes to animals affected by the war in Ukraine.</p></div></div>
+</div>
+</section>
+<section id="products">
+<span class="stag">Our Products</span>
+<h2 class="stit"><strong>Built to ship.</strong></h2>
+<p class="sdesc">Tools we built because we needed them. Now available for everyone.</p>
+<div class="prods">
+<div class="prod"><span class="ptag">Course · Available Now</span><div class="pname">Claude Code Toolkit</div><p class="pdesc">Complete guide to Anthropic's agentic dev tool. 14 modules, 10 production templates, 12 files. Available in 11 languages.</p><a href="https://gumroad.com/arvened" class="plink">Get for $29 →</a></div>
+<div class="prod"><span class="ptag">Product · In Development</span><div class="pname">SalesBot</div><p class="pdesc">AI sales assistant for Telegram. One codebase, any niche — beauty salons, legal services, education.</p><a class="plink muted">Coming soon</a></div>
+<div class="prod"><span class="ptag">Platform · Powered by DARIVS</span><div class="pname">«Добро случается»</div><p class="pdesc">Charitable challenge platform. Good just happens — one click at a time. Darivs OÜ, Estonia.</p><a href="mailto:hello@arvend.io" class="plink">Learn more →</a></div>
+</div>
+</section>
+<div class="good-s" id="good">
+<div class="good-b">
+<span class="gico">🐾</span>
+<h2 class="gtit"><span class="w1">Good </span><span class="w2">Just Happens</span></h2>
+<p class="gdesc">Every product we ship contributes $1 per sale to helping animals affected by the war in Ukraine. Not marketing. Just what we believe in.</p>
+<a href="mailto:hello@arvend.io" class="btn btn-p">Learn about DARIVS →</a>
+</div>
+</div>
+<div class="contact-s" id="contact">
+<span class="ctag">Get in touch</span>
+<h2 class="ctit"><strong>Let's build</strong>something.</h2>
+<p class="csub">Have a project in mind? Want to automate something? We're here.</p>
+<a href="mailto:hello@arvend.io" class="cemail">hello@arvend.io</a>
+</div>
+<footer>
+<div><div class="flogo">ARVEN</div><div class="ftag">AI Agency · Powered by DARIVS · Good Just Happens</div></div>
+<ul class="flinks"><li><a href="https://gumroad.com/arvened">Course</a></li><li><a href="https://github.com/arvened">GitHub</a></li><li><a href="mailto:hello@arvend.io">Contact</a></li></ul>
+<div class="fcopy">arvend.io · 2026</div>
+</footer>
+</body>
+</html>
+
