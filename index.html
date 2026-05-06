@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+OCTYPE html>
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
@@ -28,6 +28,7 @@ nav {
   top: 0;
   z-index: 100;
 }
+.nav-left { display: flex; align-items: center; gap: 30px; }
 .logo {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem;
@@ -54,6 +55,34 @@ nav {
 .nav-cta:hover {
   background: #d4af37 !important;
   color: #08061a !important;
+}
+
+/* LANGUAGE SWITCHER */
+.lang-switcher {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.lang-btn {
+  font-size: .6rem;
+  letter-spacing: 2px;
+  padding: 6px 12px;
+  background: transparent;
+  border: 1px solid rgba(212,175,55,0.3);
+  color: #7a6fa0;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all .25s;
+  font-family: 'Chakra Petch', monospace;
+}
+.lang-btn:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+.lang-btn.active {
+  background: #d4af37;
+  color: #08061a;
+  border-color: #d4af37;
 }
 
 /* HERO */
@@ -294,7 +323,30 @@ nav {
 /* PILOT BOX */
 .pilot {
   background: #12103a;
-< truncated lines 297-320 >
+  border: 1px solid rgba(74,47,160,0.4);
+  padding: 48px 40px;
+  text-align: center;
+  max-width: 580px;
+  margin: 0 auto;
+}
+.diamond {
+  width: 16px;
+  height: 16px;
+  background: #d4af37;
+  transform: rotate(45deg);
+  margin: 0 auto 20px;
+}
+.pilot-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: #f0ede6;
+  margin-bottom: 10px;
+}
+.pilot-desc {
+  font-size: .82rem;
+  line-height: 1.75;
+  color: #8a7db8;
   max-width: 440px;
   font-weight: 300;
 }
@@ -340,24 +392,6 @@ nav {
   color: #8a7db8;
   font-weight: 300;
   margin-bottom: 28px;
-}
-.founder-box {
-  background: #12103a;
-  border: 1px solid rgba(74,47,160,0.4);
-  padding: 16px 20px;
-  margin-bottom: 20px;
-}
-.founder-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  color: #d4af37;
-  margin-bottom: 3px;
-}
-.founder-role {
-  font-size: .58rem;
-  letter-spacing: 3px;
-  color: #7a6fa0;
-  text-transform: uppercase;
 }
 .clinks { display: flex; flex-direction: column; gap: 8px; }
 .clink {
@@ -407,8 +441,10 @@ footer {
 .f-info { font-size: .58rem; color: rgba(122,111,160,0.45); letter-spacing: 2px; text-align: right; line-height: 2; }
 
 @media(max-width: 700px){
-  nav { padding: 14px 20px; }
+  nav { padding: 14px 20px; flex-direction: column; gap: 10px; }
+  .nav-left { width: 100%; justify-content: space-between; }
   .nav-links { display: none; }
+  .lang-switcher { order: 2; width: 100%; justify-content: center; }
   .hero { padding: 52px 20px; }
   .stat-bar { padding: 18px 20px; gap: 28px; }
   .wrap { padding: 60px 20px; }
@@ -423,97 +459,100 @@ footer {
 <body>
 
 <nav>
-  <a href="#" class="logo">ARVEN</a>
-  <ul class="nav-links">
-    <li><a href="#problem">Проблема</a></li>
-    <li><a href="#how">Як працює</a></li>
-    <li><a href="#model">Модель</a></li>
-    <li><a href="#contact" class="nav-cta">Зв'язатись</a></li>
-  </ul>
+  <div class="nav-left">
+    <a href="#" class="logo">ARVEN</a>
+    <ul class="nav-links">
+      <li><a href="#problem" data-uk="Проблема" data-en="Problem">Problem</a></li>
+      <li><a href="#how" data-uk="Як працює" data-en="How It Works">How It Works</a></li>
+      <li><a href="#model" data-uk="Модель" data-en="Model">Model</a></li>
+      <li><a href="#contact" class="nav-cta" data-uk="Зв'язатись" data-en="Contact">Contact</a></li>
+    </ul>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="uk">UK</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
 </nav>
 
 <!-- HERO -->
 <div class="hero">
-  <div class="eyebrow">Київ, Україна · 2026</div>
+  <div class="eyebrow" data-uk="Київ, Україна · 2026" data-en="Kyiv, Ukraine · 2026">Київ, Україна · 2026</div>
   <h1>ARVEN<br><em>AUDIT</em></h1>
-  <p class="hero-sub">Автономний AI для українського бізнесу</p>
+  <p class="hero-sub" data-uk="Автономний AI для українського бізнесу" data-en="Autonomous AI for Ukrainian Business">Автономний AI для українського бізнесу</p>
   <p class="hero-body">
-    Ваш бізнес втрачає від <strong>15% до 40% маржі</strong> через
-    операційну сліпоту. Не через погану роботу команди —
-    через те, що людський мозок фізично не встигає відслідковувати
-    всі деталі в умовах кадрового дефіциту.<br><br>
-    ARVEN AUDIT — автономне аналітичне ядро,
-    яке працює 24/7 і знаходить те, що люди пропускають.
+    <span data-uk="Ваш бізнес втрачає від " data-en="Your business loses ">Ваш бізнес втрачає від </span>
+    <strong data-uk="15% до 40% маржі" data-en="15% to 40% margin">15% до 40% маржі</strong>
+    <span data-uk=" через операційну сліпоту. Не через погану роботу команди — через те, що людський мозок фізично не встигає відслідковувати всі деталі в умовах кадрового дефіциту.<br><br>ARVEN AUDIT — автономне аналітичне ядро, яке працює 24/7 і знаходить те, що люди пропускають." data-en=" due to operational blindness. Not because your team doesn't work hard — because the human brain can't physically track all details in conditions of severe staff shortage.<br><br>ARVEN AUDIT is an autonomous analytical core that works 24/7 and finds what people miss."> через операційну сліпоту. Не через погану роботу команди — через те, що людський мозок фізично не встигає відслідковувати всі деталі в умовах кадрового дефіциту.<br><br>ARVEN AUDIT — автономне аналітичне ядро, яке працює 24/7 і знаходить те, що люди пропускають.</span>
   </p>
   <div class="hero-btns">
-    <a href="#contact" class="btn btn-gold">Отримати пілот безкоштовно</a>
-    <a href="#how" class="btn btn-outline">Як це працює</a>
+    <a href="#contact" class="btn btn-gold" data-uk="Отримати пілот безкоштовно" data-en="Get Free Pilot">Отримати пілот безкоштовно</a>
+    <a href="#how" class="btn btn-outline" data-uk="Як це працює" data-en="How It Works">Як це працює</a>
   </div>
 </div>
 
 <!-- STATS -->
 <div class="stat-bar">
-  <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl">Прихованих втрат маржі</div></div>
-  <div class="stat"><div class="stat-num">30 000+</div><div class="stat-lbl">Бізнесів закрились за рік</div></div>
-  <div class="stat"><div class="stat-num">24/7</div><div class="stat-lbl">Аналіз без зупинок</div></div>
-  <div class="stat"><div class="stat-num">0₴</div><div class="stat-lbl">Стартових витрат</div></div>
+  <div class="stat"><div class="stat-num">40%</div><div class="stat-lbl" data-uk="Прихованих втрат маржі" data-en="Hidden Margin Loss">Прихованих втрат маржі</div></div>
+  <div class="stat"><div class="stat-num">30,000+</div><div class="stat-lbl" data-uk="Бізнесів закрились за рік" data-en="Businesses Closed Per Year">Бізнесів закрились за рік</div></div>
+  <div class="stat"><div class="stat-num">24/7</div><div class="stat-lbl" data-uk="Аналіз без зупинок" data-en="Analysis Without Breaks">Аналіз без зупинок</div></div>
+  <div class="stat"><div class="stat-num">$0</div><div class="stat-lbl" data-uk="Стартових витрат" data-en="Startup Costs">Стартових витрат</div></div>
 </div>
 
 <!-- PROBLEM -->
 <div class="wrap" id="problem">
-  <div class="sec-tag">Проблема</div>
-  <h2 class="sec-title">Чому бізнес<br><em>недоотримує дохід</em></h2>
+  <div class="sec-tag" data-uk="Проблема" data-en="The Problem">Проблема</div>
+  <h2 class="sec-title"><span data-uk="Чому бізнес" data-en="Why Business">Чому бізнес</span><br><em data-uk="недоотримує дохід" data-en="Leaves Money on the Table">недоотримує дохід</em></h2>
   <div class="grid-3">
     <div class="card">
       <div class="card-icon">👥</div>
-      <div class="card-title">Кадровий дефіцит</div>
-      <div class="card-text">Через міграцію та мобілізацію навантаження на тих, хто залишився, зросло втричі. Люди працюють на межі.</div>
+      <div class="card-title" data-uk="Кадровий дефіцит" data-en="Staff Shortage">Кадровий дефіцит</div>
+      <div class="card-text" data-uk="Через міграцію та мобілізацію навантаження на тих, хто залишився, зросло втричі. Люди працюють на межі." data-en="Migration and mobilization tripled the workload for those who stayed. People are working at the edge.">Через міграцію та мобілізацію навантаження на тих, хто залишився, зросло втричі. Люди працюють на межі.</div>
     </div>
     <div class="card">
       <div class="card-icon">🔍</div>
-      <div class="card-title">Операційна сліпота</div>
-      <div class="card-text">Коли всі перевантажені — дрібниці випадають. Саме в них ховаються втрати.</div>
+      <div class="card-title" data-uk="Операційна сліпота" data-en="Operational Blindness">Операційна сліпота</div>
+      <div class="card-text" data-uk="Коли всі перевантажені — дрібниці випадають. Саме в них ховаються втрати." data-en="When everyone is overloaded, details slip through. That's where the losses hide.">Коли всі перевантажені — дрібниці випадають. Саме в них ховаються втрати.</div>
       <div class="card-big">–40%</div>
     </div>
     <div class="card">
       <div class="card-icon">⚡</div>
-      <div class="card-title">Швидкі зміни</div>
-      <div class="card-text">Логістика, постачання, персонал, ціни — змінюються щотижня. Ручний аналіз не встигає.</div>
+      <div class="card-title" data-uk="Швидкі зміни" data-en="Rapid Changes">Швидкі зміни</div>
+      <div class="card-text" data-uk="Логістика, постачання, персонал, ціни — змінюються щотижня. Ручний аналіз не встигає." data-en="Logistics, supply, personnel, prices — shifting weekly. Manual analysis can't keep up.">Логістика, постачання, персонал, ціни — змінюються щотижня. Ручний аналіз не встигає.</div>
     </div>
   </div>
 </div>
 
 <!-- HOW -->
 <div class="wrap" id="how" style="padding-top:0;">
-  <div class="sec-tag">Рішення</div>
-  <h2 class="sec-title">Як працює<br><em>ARVEN AUDIT</em></h2>
+  <div class="sec-tag" data-uk="Рішення" data-en="Solution">Рішення</div>
+  <h2 class="sec-title"><span data-uk="Як працює" data-en="How">Як працює</span><br><em>ARVEN AUDIT</em></h2>
   <div class="steps">
     <div class="step">
       <div class="step-n">01</div>
       <div>
-        <div class="step-title">Інтеграція в структуру</div>
-        <div class="step-desc">Розгортається у приватному контурі — Docker, Private Cloud. Дані не виходять назовні. Повна безпека та незалежність.</div>
+        <div class="step-title" data-uk="Інтеграція в структуру" data-en="Integration Into Structure">Інтеграція в структуру</div>
+        <div class="step-desc" data-uk="Розгортається у приватному контурі — Docker, Private Cloud. Дані не виходять назовні. Повна безпека та незалежність." data-en="Deployed in a private contour — Docker, Private Cloud. Data stays inside. Full security and independence.">Розгортається у приватному контурі — Docker, Private Cloud. Дані не виходять назовні. Повна безпека та незалежність.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-n">02</div>
       <div>
-        <div class="step-title">Аналіз 24/7</div>
-        <div class="step-desc">Графова база Neo4j обробляє масиви операційних даних і виявляє приховані точки доходу — ті, що людина фізично не може помітити.</div>
+        <div class="step-title" data-uk="Аналіз 24/7" data-en="24/7 Analysis">Аналіз 24/7</div>
+        <div class="step-desc" data-uk="Графова база Neo4j обробляє масиви операційних даних і виявляє приховані точки доходу — ті, що людина фізично не може помітити." data-en="Neo4j graph database processes operational data arrays and reveals hidden revenue points — those a human cannot physically see.">Графова база Neo4j обробляє масиви операційних даних і виявляє приховані точки доходу — ті, що людина фізично не може помітити.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-n">03</div>
       <div>
-        <div class="step-title">Конкретні рекомендації</div>
-        <div class="step-desc">Система не просто показує цифри — підказує дії: де втрати, як адаптувати процес, що змінити прямо зараз.</div>
+        <div class="step-title" data-uk="Конкретні рекомендації" data-en="Concrete Recommendations">Конкретні рекомендації</div>
+        <div class="step-desc" data-uk="Система не просто показує цифри — підказує дії: де втрати, як адаптувати процес, що змінити прямо зараз." data-en="The system doesn't just show numbers — it suggests actions: where losses are, how to adapt the process, what to change right now.">Система не просто показує цифри — підказує дії: де втрати, як адаптувати процес, що змінити прямо зараз.</div>
       </div>
     </div>
     <div class="step">
       <div class="step-n">04</div>
       <div>
-        <div class="step-title">Команда посилюється</div>
-        <div class="step-desc">Ваші спеціалісти займаються живою роботою. Складну аналітику бере на себе система. Люди не замінюються — вони звільняються від рутини.</div>
+        <div class="step-title" data-uk="Команда посилюється" data-en="Team Gets Stronger">Команда посилюється</div>
+        <div class="step-desc" data-uk="Ваші спеціалісти займаються живою роботою. Складну аналітику бере на себе система. Люди не замінюються — вони звільняються від рутини." data-en="Your specialists focus on live work. Complex analytics goes to the system. People aren't replaced — they're freed from routine.">Ваші спеціалісти займаються живою роботою. Складну аналітику бере на себе система. Люди не замінюються — вони звільняються від рутини.</div>
       </div>
     </div>
   </div>
@@ -521,26 +560,26 @@ footer {
 
 <!-- BAND -->
 <div class="band">
-  <p class="formula">Ми не замінюємо людей.<br>Ми стаємо їх <strong>інтелектуальною опорою.</strong></p>
-  <p class="formula-note">ARVEN AUDIT · Автономна система · Київ, Україна · 2026</p>
+  <p class="formula"><span data-uk="Ми не замінюємо людей.<br>Ми стаємо їх " data-en="We don't replace people.<br>We become their ">Ми не замінюємо людей.<br>Ми стаємо їх </span><strong data-uk="інтелектуальною опорою." data-en="intellectual backbone.">інтелектуальною опорою.</strong></p>
+  <p class="formula-note" data-uk="ARVEN AUDIT · Автономна система · Київ, Україна · 2026" data-en="ARVEN AUDIT · Autonomous System · Kyiv, Ukraine · 2026">ARVEN AUDIT · Автономна система · Київ, Україна · 2026</p>
 </div>
 
 <!-- MODEL -->
 <div class="wrap" id="model">
-  <div class="sec-tag">Модель роботи</div>
-  <h2 class="sec-title">Revenue Share —<br><em>оплата за результат</em></h2>
+  <div class="sec-tag" data-uk="Модель роботи" data-en="Business Model">Модель роботи</div>
+  <h2 class="sec-title">Revenue Share —<br><em data-uk="оплата за результат" data-en="Payment for Results">оплата за результат</em></h2>
   <div class="grid-3">
     <div class="card">
-      <div class="card-title">Без стартових інвестицій</div>
-      <div class="card-text">Ви не платите авансом. Ми отримуємо лише відсоток від фактичного прибутку або ліквідованих втрат.</div>
+      <div class="card-title" data-uk="Без стартових інвестицій" data-en="Zero Upfront Investment">Без стартових інвестицій</div>
+      <div class="card-text" data-uk="Ви не платите авансом. Ми отримуємо лише відсоток від фактичного прибутку або ліквідованих втрат." data-en="You don't pay in advance. We get only a percentage of actual profit or losses eliminated.">Ви не платите авансом. Ми отримуємо лише відсоток від фактичного прибутку або ліквідованих втрат.</div>
     </div>
     <div class="card">
-      <div class="card-title">Суверенний стек</div>
-      <div class="card-text">Self-hosted n8n + Docker у вашому приватному контурі. Повна безпека даних. Незалежність від зовнішніх сервісів.</div>
+      <div class="card-title" data-uk="Суверенний стек" data-en="Sovereign Stack">Суверенний стек</div>
+      <div class="card-text" data-uk="Self-hosted n8n + Docker у вашому приватному контурі. Повна безпека даних. Незалежність від зовнішніх сервісів." data-en="Self-hosted n8n + Docker in your private contour. Full data security. Independence from external services.">Self-hosted n8n + Docker у вашому приватному контурі. Повна безпека даних. Незалежність від зовнішніх сервісів.</div>
     </div>
     <div class="card">
-      <div class="card-title">Швидкий старт</div>
-      <div class="card-text">Пілот розгортається за 3–7 днів. Перші результати — до кінця першого тижня. Без довгих впроваджень.</div>
+      <div class="card-title" data-uk="Швидкий старт" data-en="Fast Start">Швидкий старт</div>
+      <div class="card-text" data-uk="Пілот розгортається за 3–7 днів. Перші результати — до кінця першого тижня. Без довгих впроваджень." data-en="Pilot deploys in 3–7 days. First results by end of week one. No long implementations.">Пілот розгортається за 3–7 днів. Перші результати — до кінця першого тижня. Без довгих впроваджень.</div>
     </div>
   </div>
 </div>
@@ -549,15 +588,15 @@ footer {
 <div class="wrap" style="padding-top:0; padding-bottom:80px;">
   <div class="pilot">
     <div class="diamond"></div>
-    <div class="pilot-title">Безкоштовний пілот</div>
-    <p class="pilot-desc">Відбираємо 2 підприємства для повністю безкоштовного пілоту. Ми розгортаємо. Ви тестуєте. Ви вирішуєте.</p>
+    <div class="pilot-title" data-uk="Безкоштовний пілот" data-en="Free Pilot">Безкоштовний пілот</div>
+    <p class="pilot-desc" data-uk="Відбираємо 2 підприємства для повністю безкоштовного пілоту. Ми розгортаємо. Ви тестуєте. Ви вирішуєте." data-en="We're selecting 2 businesses for a completely free pilot. We deploy. You test. You decide.">Відбираємо 2 підприємства для повністю безкоштовного пілоту. Ми розгортаємо. Ви тестуєте. Ви вирішуєте.</p>
     <ul class="pilot-list">
-      <li>Аналіз одного реального процесу вашого бізнесу</li>
-      <li>2 тижні живої роботи системи</li>
-      <li>Повний звіт: втрати, можливості, ROI</li>
-      <li>Жодної оплати. Жодних зобов'язань.</li>
+      <li data-uk="Аналіз одного реального процесу вашого бізнесу" data-en="Analysis of one real business process of yours">Аналіз одного реального процесу вашого бізнесу</li>
+      <li data-uk="2 тижні живої роботи системи" data-en="2 weeks of live system operation">2 тижні живої роботи системи</li>
+      <li data-uk="Повний звіт: втрати, можливості, ROI" data-en="Complete report: losses, opportunities, ROI">Повний звіт: втрати, можливості, ROI</li>
+      <li data-uk="Жодної оплати. Жодних зобов'язань." data-en="No payment. No obligations.">Жодної оплати. Жодних зобов'язань.</li>
     </ul>
-    <a href="mailto:hello@arvend.io" class="btn btn-gold">Подати заявку на пілот</a>
+    <a href="mailto:hello@arvend.io" class="btn btn-gold" data-uk="Подати заявку на пілот" data-en="Apply for Pilot">Подати заявку на пілот</a>
     <div class="diamond" style="margin:24px auto 0;"></div>
   </div>
 </div>
@@ -565,29 +604,70 @@ footer {
 <!-- CONTACT -->
 <div class="contact-grid" id="contact">
   <div>
-    <h2 class="c-title">Побудуємо<br><em>разом</em></h2>
-    <p class="c-desc">ARVEN AI Agency — команда з професійним досвідом роботи на різних ринках. Будуємо в умовах війни — бо найкращий час будувати те, що переживе війну, це зараз.</p>
+    <h2 class="c-title"><span data-uk="Побудуємо" data-en="Build">Побудуємо</span><br><em data-uk="разом" data-en="Together">разом</em></h2>
+    <p class="c-desc" data-uk="ARVEN AI Agency — команда з професійним досвідом роботи на різних ринках. Будуємо в умовах війни — бо найкращий час будувати те, що переживе війну, це зараз." data-en="ARVEN AI Agency — a team with professional experience across different markets. Building in wartime — because the best time to build something that survives war is now.">ARVEN AI Agency — команда з професійним досвідом роботи на різних ринках. Будуємо в умовах війни — бо найкращий час будувати те, що переживе війну, це зараз.</p>
   </div>
   <div class="clinks">
-    <a href="mailto:hello@arvend.io" class="clink"><span class="clbl">Email</span>hello@arvend.io</a>
-    <a href="tel:+380954763406" class="clink"><span class="clbl">Телефон</span>+380 (95) 476-34-06</a>
+    <a href="mailto:hello@arvend.io" class="clink"><span class="clbl" data-uk="Email" data-en="Email">Email</span>hello@arvend.io</a>
+    <a href="tel:+380954763406" class="clink"><span class="clbl" data-uk="Телефон" data-en="Phone">Телефон</span>+380 (95) 476-34-06</a>
     <a href="https://t.me/arven_agency" class="clink"><span class="clbl">Telegram</span>@arven_agency</a>
     <a href="https://linkedin.com/in/eduardarbitman" class="clink"><span class="clbl">LinkedIn</span>Eduard Arbitman</a>
-    <a href="mailto:hello@arvend.io" class="btn btn-gold" style="text-align:center; margin-top:10px;">Написати нам</a>
+    <a href="mailto:hello@arvend.io" class="btn btn-gold" style="text-align:center; margin-top:10px;" data-uk="Написати нам" data-en="Write to Us">Написати нам</a>
   </div>
 </div>
 
 <footer>
   <div>
     <div class="f-logo">ARVEN</div>
-    <div class="f-tag">Good Just Happens</div>
+    <div class="f-tag" data-uk="Good Just Happens" data-en="Good Just Happens">Good Just Happens</div>
   </div>
   <div class="f-info">
     ARVEN AI Agency · arvend.io<br>
-    ФОП Арбітман Е.Д. · ІПН 2277914618<br>
-    Київ, Україна · 2026
+    <span data-uk="ФОП Арбітман Е.Д. · ІПН 2277914618" data-en="FOP Arbitman E.D. · TIN 2277914618">ФОП Арбітман Е.Д. · ІПН 2277914618</span><br>
+    <span data-uk="Київ, Україна · 2026" data-en="Kyiv, Ukraine · 2026">Київ, Україна · 2026</span>
   </div>
 </footer>
 
+<script>
+// Language switcher
+const langBtns = document.querySelectorAll('.lang-btn');
+const translatableElements = document.querySelectorAll('[data-uk][data-en]');
+let currentLang = localStorage.getItem('arvenLang') || 'uk';
+
+// Set initial language
+setLanguage(currentLang);
+
+langBtns.forEach(btn => {
+  btn.addEventListener('click', function() {
+    currentLang = this.getAttribute('data-lang');
+    localStorage.setItem('arvenLang', currentLang);
+    setLanguage(currentLang);
+  });
+});
+
+function setLanguage(lang) {
+  // Update button states
+  langBtns.forEach(btn => {
+    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+  });
+
+  // Update HTML lang attribute
+  document.documentElement.lang = lang;
+
+  // Update all translatable elements
+  translatableElements.forEach(element => {
+    if (element.hasAttribute(`data-${lang}`)) {
+      if (element.textContent && element.children.length === 0) {
+        // Only text content
+        element.textContent = element.getAttribute(`data-${lang}`);
+      } else if (element.innerHTML) {
+        // Has HTML content - need to preserve structure
+        element.innerHTML = element.getAttribute(`data-${lang}`);
+      }
+    }
+  });
+}
+</script>
+
 </body>
-</html>
+</html
